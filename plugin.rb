@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # name: discourse-jeed
-# about: Discourse support for turning fenced code blocks into playgrounds # backed by Jeed
+# about: Discourse support for turning fenced code blocks into playgrounds backed by Jeed.
 # version: 0.1
 # authors: Geoffrey Challen
 
