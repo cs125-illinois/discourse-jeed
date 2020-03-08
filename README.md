@@ -1,3 +1,4 @@
-# lazy-yt
+# discourse-jeed
 
-Lazy load YouTube videos plugin for [Discourse](http://discourse.org), highly inspired by the [lazyYT](https://github.com/tylerpearson/lazyYT) jQuery plugin.
+Turn Discourse fenced Java and Kotlin code blocks into runnable examples backed by
+[Jeed](https://github.com/cs125-illinois/jeed).
