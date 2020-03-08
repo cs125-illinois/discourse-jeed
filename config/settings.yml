@@ -1,0 +1,7 @@
+plugins:
+  jeed_enabled:
+    default: true
+    client: true
+  jeed_backend:
+    default: ""
+    client: true
