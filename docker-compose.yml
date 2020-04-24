@@ -1,0 +1,13 @@
+version: "2"
+networks:
+  discourse-jeed:
+    driver: bridge
+services:
+  jeed:
+    image: "cs125/jeed:latest"
+    ports:
+      - "8888:8888"
+    networks:
+      - discourse-jeed
+    environment:
+      - "HOSTS=http://localhost:9292"

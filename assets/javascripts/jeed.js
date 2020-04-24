@@ -137,7 +137,7 @@
         language = "kotlin";
       }
 
-      code.css({ position: "relative" });
+      $(elem).css({ position: "relative" });
 
       var outputWrapper = $('<div class="jeed output" style="position: relative;"><pre></pre></div>').css({
         display: "none"
@@ -154,14 +154,13 @@
       output.css({ display: "none" });
 
       var timer = void 0;
-      var runButton = $(options.runButton || defaultRunButton);
-      code.on("click", "button", function () {
+      var runButton = $(options.runButton || defaultRunButton).on("click", function () {
         $(output).text("");
         timer = setTimeout(function () {
           $(outputWrapper).css({ display: "block" });
           runningBanner.css({ display: "block" });
         }, 100);
-        runWithJeed(server, $(this).parent("code").text(), language).done(function (result) {
+        runWithJeed(server, $(this).prev("code").text(), language).done(function (result) {
           $(outputWrapper).css({ display: "block" });
           var jeedOutput = formatJeedResult(result);
           if (jeedOutput !== "") {
@@ -184,7 +183,7 @@
         });
       });
 
-      code.append(runButton);
+      $(elem).append(runButton);
       $(elem).append(outputWrapper);
     });
   };
