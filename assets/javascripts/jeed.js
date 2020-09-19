@@ -88,8 +88,6 @@
         resultOutput += "Error: could not find class " + result.failed.execution.classNotFound.klass;
       } else if (result.failed.execution.methodNotFound) {
         resultOutput += "Error: could not find method " + result.failed.execution.methodNotFound.method;
-      } else if (result.failed.execution.threw) {
-        resultOutput += result.failed.execution.threw;
       } else {
         resultOutput += "Something went wrong...";
       }
@@ -102,6 +100,9 @@
         var executionLines = execution.outputLines.map(function (outputLine) {
           return outputLine.line;
         });
+        if (execution.threw) {
+          executionLines.push(execution.threw.stacktrace);
+        }
         if (execution.timeout) {
           executionLines.push("(Program Timed Out)");
         }
