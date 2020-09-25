@@ -1,10 +1,11 @@
 "use strict";
 
 (function ($) {
-  function runWithJeed(server, snippet, language) {
+  function runWithJeed(server, snippet, language, checkstyle) {
     var tasks = { execute: true };
     if (language === "java") {
       tasks.compile = true;
+      tasks.checkstyle = checkstyle;
     } else if (language === "kotlin") {
       tasks.kompile = true;
     } else {
@@ -16,6 +17,9 @@
       arguments: {
         snippet: {
           indent: 2
+        },
+        checkstyle: {
+          failOnError: true
         }
       }
     };
@@ -154,6 +158,7 @@
       var output = $(outputWrapper).children("pre").eq(0);
       output.css({ display: "none" });
 
+      var checkstyle = options.checkstyle || false;
       var timer = void 0;
       var runButton = $(options.runButton || defaultRunButton).on("click", function () {
         $(output).text("");
@@ -161,7 +166,7 @@
           $(outputWrapper).css({ display: "block" });
           runningBanner.css({ display: "block" });
         }, 100);
-        runWithJeed(server, $(this).prev("code").text(), language).done(function (result) {
+        runWithJeed(server, $(this).prev("code").text(), language, checkstyle).done(function (result) {
           $(outputWrapper).css({ display: "block" });
           var jeedOutput = formatJeedResult(result);
           if (jeedOutput !== "") {

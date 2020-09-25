@@ -5,3 +5,6 @@ plugins:
   jeed_backend:
     default: ""
     client: true
+  jeed_checkstyle:
+    default: true
+    client: true

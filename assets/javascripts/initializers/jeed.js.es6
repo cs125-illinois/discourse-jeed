@@ -17,7 +17,8 @@ export default {
             console.warn("Jeed Backend site settings must be set!")
             return
           }
-          $("pre", $elem).jeed(server, { runButton, closeButton })
+          const checkstyle = Discourse.SiteSettings.jeed_checkstyle
+          $("pre", $elem).jeed(server, { runButton, closeButton, checkstyle })
         },
         { id: "discourse-jeed" }
       );

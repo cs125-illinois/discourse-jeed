@@ -2,3 +2,4 @@ en:
   site_settings:
     jeed_enabled: "Is Jeed enabled for Java and Kotlin code snippets?"
     jeed_backend: "What is the URL to the Jeed backend?"
+    jeed_checkstyle: "Should checkstyle be run on submitted Java code?"
