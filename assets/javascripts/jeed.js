@@ -57,21 +57,27 @@
           _errors = _ref.errors;
 
       resultOutput += _errors.map(function (error) {
-        var _error$location = error.location,
-            source = _error$location.source,
-            line = _error$location.line,
-            column = _error$location.column;
+        var location = error.location,
+            message = error.message;
 
-        var originalLine = source === "" ? request.snippet.split("\n")[line - 1] : request.sources[0].contents.split("\n")[line - 1];
-        var firstErrorLine = error.message.split("\n").slice(0, 1).join("\n");
-        var restError = error.message.split("\n").slice(1).filter(function (errorLine) {
-          if (source === "" && errorLine.trim().startsWith("location: class")) {
-            return false;
-          } else {
-            return true;
-          }
-        }).join("\n");
-        return "" + (source === "" ? "Line " : source + ":") + line + ": error: " + firstErrorLine + "\n" + originalLine + "\n" + new Array(column).join(" ") + "^\n" + restError;
+        if (location) {
+          var source = location.source,
+              line = location.line,
+              column = location.column;
+
+          var originalLine = source === "" ? request.snippet.split("\n")[line - 1] : request.sources[0].contents.split("\n")[line - 1];
+          var firstErrorLine = error.message.split("\n").slice(0, 1).join("\n");
+          var restError = error.message.split("\n").slice(1).filter(function (errorLine) {
+            if (source === "" && errorLine.trim().startsWith("location: class")) {
+              return false;
+            } else {
+              return true;
+            }
+          }).join("\n");
+          return "" + (source === "" ? "Line " : source + ":") + line + ": error: " + firstErrorLine + "\n  " + originalLine + "\n  " + new Array(column).join(" ") + "^\n  " + restError;
+        } else {
+          return message;
+        }
       }).join("\n");
       var _errorCount = Object.keys(_errors).length;
       resultOutput += "\n" + _errorCount + " error" + (_errorCount > 1 ? "s" : "");
@@ -79,9 +85,9 @@
       var _errors2 = result.failed.checkstyle.errors;
 
       resultOutput += _errors2.map(function (error) {
-        var _error$location2 = error.location,
-            source = _error$location2.source,
-            line = _error$location2.line;
+        var _error$location = error.location,
+            source = _error$location.source,
+            line = _error$location.line;
 
         return "" + (source === "" ? "Line " : source + ":") + line + ": checkstyle error: " + error.message;
       }).join("\n");
