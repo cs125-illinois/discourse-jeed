@@ -1,6 +1,7 @@
 "use strict";
 
 (function ($) {
+  console.log("Jeed loaded");
   function runWithJeed(server, snippet, language, checkstyle) {
     var tasks = { execute: true };
     if (language === "java") {
