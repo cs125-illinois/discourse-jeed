@@ -1,7 +1,7 @@
-"use strict";
-console.log("Script loaded");
-(function ($) {
-  console.log("Jeed loaded");
+export default function initJeed($) {
+  console.log("Initializing Jeed");
+  "use strict";
+
   function runWithJeed(server, snippet, language, checkstyle) {
     var tasks = { execute: true };
     if (language === "java") {
@@ -200,4 +200,4 @@ console.log("Script loaded");
       $(elem).append(outputWrapper);
     });
   };
-})(jQuery);
+}
