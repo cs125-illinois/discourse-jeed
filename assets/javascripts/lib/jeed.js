@@ -1,5 +1,4 @@
 export default function initJeed($) {
-  console.log("Initializing Jeed");
   "use strict";
 
   function runWithJeed(server, snippet, language, checkstyle) {

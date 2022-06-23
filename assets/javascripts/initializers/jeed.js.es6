@@ -15,13 +15,11 @@ export default {
       api.decorateCooked(
         $elem => {
           const siteSettings = api.container.lookup("site-settings:main");
-          // const server = Discourse.SiteSettings.jeed_backend
           const server = siteSettings.jeed_backend
           if (server === "") {
             console.warn("Jeed Backend site settings must be set!")
             return
           }
-          // const checkstyle = Discourse.SiteSettings.jeed_checkstyle
           const checkstyle = siteSettings.jeed_checkstyle
           $("pre", $elem).jeed(server, { runButton, closeButton, checkstyle })
         },
