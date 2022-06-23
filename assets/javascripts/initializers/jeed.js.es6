@@ -1,6 +1,6 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { iconHTML } from "discourse-common/lib/icon-library";
-import initJeed from "../jeed.js";
+import initJeed from "../lib/jeed.js";
 
 const runButton =
   '<button class="jeed play widget-button btn btn-default no-text btn-icon" style="position: relative; float: right; top: -32px; margin-bottom: -32px;">' + iconHTML('play-circle') + '</button>';
