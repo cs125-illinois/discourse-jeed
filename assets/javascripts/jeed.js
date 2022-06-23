@@ -1,5 +1,5 @@
 "use strict";
-
+console.log("Script loaded");
 (function ($) {
   console.log("Jeed loaded");
   function runWithJeed(server, snippet, language, checkstyle) {
